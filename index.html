@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CreedAI Public Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7f9;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #657282;
+      --line: #d9e0e7;
+      --good: #0f6b45;
+      --bad: #9b2f2f;
+      --accent: #245b73;
+      --accent-soft: #e5f0f4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      padding: 28px 24px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); letter-spacing: 0; }
+    .stamp { color: var(--muted); font-size: 14px; }
+    main { padding: 24px 0 40px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .stat, section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .stat { padding: 18px; }
+    .stat span { display: block; color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+    .stat strong { display: block; font-size: clamp(26px, 4vw, 38px); line-height: 1; color: var(--accent); }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      align-items: start;
+    }
+    section { padding: 18px; margin-bottom: 16px; }
+    h2 { margin: 0 0 14px; font-size: 20px; letter-spacing: 0; }
+    .service-list, .cards, .briefs { display: grid; gap: 10px; }
+    .service, .item {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      background: #fbfcfd;
+    }
+    .service {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .online { color: var(--good); }
+    .offline { color: var(--bad); }
+    .meta { color: var(--muted); font-size: 13px; margin-top: 5px; line-height: 1.4; }
+    .project-title, .item-title { font-weight: 750; }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 0 28px;
+    }
+    @media (max-width: 820px) {
+      .stats, .grid { grid-template-columns: 1fr; }
+      header { padding-left: 0; padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topline">
+      <div>
+        <h1>CreedAI Public Dashboard</h1>
+        <div class="stamp">Sanitized static export. Obsidian remains the source of truth.</div>
+      </div>
+      <div class="stamp" id="generatedAt"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat"><span>Memory Records</span><strong id="memoryRecordCount">0</strong></div>
+      <div class="stat"><span>Vector Points</span><strong id="vectorPointCount">0</strong></div>
+      <div class="stat"><span>Memory Health</span><strong id="memoryHealthScore">--</strong></div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <h2>System Status</h2>
+          <div class="service-list" id="services"></div>
+        </section>
+
+        <section>
+          <h2>Recent Captures</h2>
+          <div class="cards" id="recentCaptures"></div>
+        </section>
+      </div>
+
+      <div>
+        <section>
+          <h2>Current Projects</h2>
+          <div class="cards" id="projects"></div>
+        </section>
+
+        <section>
+          <h2>Latest Agent Briefs</h2>
+          <div class="briefs" id="latestBriefs"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    This dashboard intentionally excludes tokens, raw private notes, environment files, and full vault contents.
+  </footer>
+
+  <script id="dashboard-data" type="application/json">{
+    "generatedAt":  "2026-06-02 14:28:34",
+    "memoryRecordCount":  49,
+    "vectorPointCount":  54,
+    "memoryHealthScore":  "97.1 / 100",
+    "services":  [
+                     {
+                         "name":  "Ollama",
+                         "status":  "online",
+                         "detail":  "models: 4"
+                     },
+                     {
+                         "name":  "Qdrant",
+                         "status":  "online",
+                         "detail":  "points: 54"
+                     },
+                     {
+                         "name":  "Open WebUI",
+                         "status":  "online",
+                         "detail":  "HTTP 200"
+                     },
+                     {
+                         "name":  "n8n",
+                         "status":  "online",
+                         "detail":  "HTTP 200"
+                     }
+                 ],
+    "recentCaptures":  [
+                           {
+                               "title":  "classification-test-ghost",
+                               "project":  "Ghost",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 13:01"
+                           },
+                           {
+                               "title":  "drive-test-note-20260602-123226",
+                               "project":  "General",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:39"
+                           },
+                           {
+                               "title":  "drive-continuous-drive-test-20260602-123929-20260602-123934",
+                               "project":  "Automations",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:39"
+                           },
+                           {
+                               "title":  "telegram-idea-20260602-122230-2",
+                               "project":  "Research",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:22"
+                           },
+                           {
+                               "title":  "telegram-general-20260602-122224-1",
+                               "project":  "General",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:22"
+                           },
+                           {
+                               "title":  "telegram-idea-20260602-121301-77",
+                               "project":  "CreedConsult",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:13"
+                           },
+                           {
+                               "title":  "portal-Browser Form Acceptance Test-20260602-115749",
+                               "project":  "General",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 12:04"
+                           },
+                           {
+                               "title":  "portal-Portal Acceptance Test-20260602-115526",
+                               "project":  "Agents",
+                               "type":  "",
+                               "status":  "",
+                               "modified":  "2026-06-02 11:56"
+                           },
+                           {
+                               "title":  "drive-drive-test-note-20260602-115452",
+                               "project":  "creedConsult",
+                               "type":  "",
+                               "status":  "",
+                               "modified":  "2026-06-02 11:56"
+                           }
+                       ],
+    "projects":  [
+                     {
+                         "name":  "creedConsult",
+                         "status":  "active",
+                         "purpose":  "Create a centralized operating layer where business processes, automations, internal knowledge, and agent activity can be planned, tracked, and improved."
+                     },
+                     {
+                         "name":  "Ghost",
+                         "status":  "active",
+                         "purpose":  "Help users understand follower and following relationships, identify low-value or inactive connections, and make better social graph decisions."
+                     },
+                     {
+                         "name":  "Volatile",
+                         "status":  "active",
+                         "purpose":  "Support market research, signal generation, education, content workflows, and community intelligence."
+                     }
+                 ],
+    "latestBriefs":  [
+                         {
+                             "title":  "20260602-134430-Codex-Implement the next Ghost privacy review workflow",
+                             "agent":  "Codex",
+                             "generated":  "2026-06-02 13:44"
+                         },
+                         {
+                             "title":  "20260602-134416-ChatGPT-What should we build next for Ghost privacy and social graph intellige",
+                             "agent":  "ChatGPT",
+                             "generated":  "2026-06-02 13:44"
+                         }
+                     ]
+}</script>
+  <script>
+    const data = JSON.parse(document.getElementById("dashboard-data").textContent);
+    const text = (value) => value == null || value === "" ? "Not set" : String(value);
+
+    document.getElementById("generatedAt").textContent = "Generated " + text(data.generatedAt);
+    document.getElementById("memoryRecordCount").textContent = data.memoryRecordCount;
+    document.getElementById("vectorPointCount").textContent = data.vectorPointCount;
+    document.getElementById("memoryHealthScore").textContent = data.memoryHealthScore;
+
+    const services = document.getElementById("services");
+    data.services.forEach((service) => {
+      const row = document.createElement("div");
+      row.className = "service";
+      row.innerHTML = "<div><strong>" + text(service.name) + "</strong><div class=\"meta\">" + text(service.detail) + "</div></div><span class=\"pill " + text(service.status) + "\">" + text(service.status) + "</span>";
+      services.appendChild(row);
+    });
+
+    const captures = document.getElementById("recentCaptures");
+    data.recentCaptures.forEach((capture) => {
+      const card = document.createElement("div");
+      card.className = "item";
+      card.innerHTML = "<div class=\"item-title\">" + text(capture.title) + "</div><div class=\"meta\">" + text(capture.project) + " &middot; " + text(capture.type) + " &middot; " + text(capture.status) + " &middot; " + text(capture.modified) + "</div>";
+      captures.appendChild(card);
+    });
+    if (!data.recentCaptures.length) captures.textContent = "No recent captures available.";
+
+    const projects = document.getElementById("projects");
+    data.projects.forEach((project) => {
+      const card = document.createElement("div");
+      card.className = "item";
+      card.innerHTML = "<div class=\"project-title\">" + text(project.name) + " <span class=\"pill\">" + text(project.status) + "</span></div><div class=\"meta\">" + text(project.purpose) + "</div>";
+      projects.appendChild(card);
+    });
+    if (!data.projects.length) projects.textContent = "No current projects available.";
+
+    const briefs = document.getElementById("latestBriefs");
+    data.latestBriefs.forEach((brief) => {
+      const card = document.createElement("div");
+      card.className = "item";
+      card.innerHTML = "<div class=\"item-title\">" + text(brief.agent) + "</div><div class=\"meta\">" + text(brief.title) + " &middot; " + text(brief.generated) + "</div>";
+      briefs.appendChild(card);
+    });
+    if (!data.latestBriefs.length) briefs.textContent = "No agent briefs generated yet.";
+  </script>
+</body>
+</html>

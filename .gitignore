@@ -1,0 +1,43 @@
+﻿# CreedAI public dashboard repo
+# Publish only sanitized static dashboard assets.
+
+# CreedAI private workspace paths
+.env
+.env.*
+obsidian-vault/
+logs/
+config/
+inbox/
+raw-notes/
+workspace/
+models/
+n8n/
+scripts/
+prompts/
+exports/
+!index.html
+!assets/
+
+# Agent/private generated materials
+agent_briefs/
+agent-briefs/
+*.token
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+
+# OS/editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+*.temp
+*.log
+
+# Dependency/build folders
+node_modules/
+.cache/
+dist/
+build/
