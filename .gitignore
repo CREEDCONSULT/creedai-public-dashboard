@@ -39,5 +39,11 @@ desktop.ini
 # Dependency/build folders
 node_modules/
 .cache/
+.wrangler/
 dist/
 build/
+
+# Wrangler config belongs outside the public asset tree.
+wrangler.toml
+wrangler.json
+wrangler.jsonc
