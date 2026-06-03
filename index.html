@@ -43,7 +43,7 @@
     main { padding: 24px 0 40px; }
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 14px;
       margin-bottom: 20px;
     }
@@ -118,6 +118,8 @@
       <div class="stat"><span>Memory Records</span><strong id="memoryRecordCount">0</strong></div>
       <div class="stat"><span>Vector Points</span><strong id="vectorPointCount">0</strong></div>
       <div class="stat"><span>Memory Health</span><strong id="memoryHealthScore">--</strong></div>
+      <div class="stat"><span>Wiki Pages</span><strong id="wikiPageCount">0</strong></div>
+      <div class="stat"><span>Orphan Notes</span><strong id="orphanNoteCount">0</strong></div>
     </div>
 
     <div class="grid">
@@ -131,6 +133,11 @@
           <h2>Recent Captures</h2>
           <div class="cards" id="recentCaptures"></div>
         </section>
+
+        <section>
+          <h2>Top Linked Hubs</h2>
+          <div class="cards" id="topLinkedHubs"></div>
+        </section>
       </div>
 
       <div>
@@ -143,6 +150,11 @@
           <h2>Latest Agent Briefs</h2>
           <div class="briefs" id="latestBriefs"></div>
         </section>
+
+        <section>
+          <h2>Latest Wiki Updates</h2>
+          <div class="briefs" id="latestWikiUpdates"></div>
+        </section>
       </div>
     </div>
   </main>
@@ -152,10 +164,88 @@
   </footer>
 
   <script id="dashboard-data" type="application/json">{
-    "generatedAt":  "2026-06-02 17:19:23",
-    "memoryRecordCount":  49,
-    "vectorPointCount":  54,
+    "generatedAt":  "2026-06-02 20:00:58",
+    "memoryRecordCount":  68,
+    "vectorPointCount":  142,
     "memoryHealthScore":  "97.1 / 100",
+    "wikiPageCount":  19,
+    "orphanNoteCount":  0,
+    "topLinkedHubs":  [
+                          {
+                              "hub":  "CreedAI_Wiki_Home",
+                              "inbound":  67
+                          },
+                          {
+                              "hub":  "Knowledge_Graph",
+                              "inbound":  51
+                          },
+                          {
+                              "hub":  "Automation_First",
+                              "inbound":  50
+                          },
+                          {
+                              "hub":  "Semantic_Memory",
+                              "inbound":  44
+                          },
+                          {
+                              "hub":  "Project_Profile",
+                              "inbound":  42
+                          },
+                          {
+                              "hub":  "Obsidian_Source_of_Truth",
+                              "inbound":  35
+                          },
+                          {
+                              "hub":  "CreedAI",
+                              "inbound":  34
+                          },
+                          {
+                              "hub":  "Google_Drive_Sync",
+                              "inbound":  31
+                          }
+                      ],
+    "latestWikiUpdates":  [
+                              {
+                                  "title":  "log",
+                                  "category":  "03_Wiki",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Graph_Map",
+                                  "category":  "03_Wiki",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "index",
+                                  "category":  "03_Wiki",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Qdrant_Indexing",
+                                  "category":  "Concepts",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Google_Drive_Sync",
+                                  "category":  "Concepts",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Knowledge_Graph",
+                                  "category":  "Concepts",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Telegram_Capture",
+                                  "category":  "Concepts",
+                                  "updated":  "2026-06-02 19:59"
+                              },
+                              {
+                                  "title":  "Obsidian_Source_of_Truth",
+                                  "category":  "Concepts",
+                                  "updated":  "2026-06-02 19:57"
+                              }
+                          ],
     "services":  [
                      {
                          "name":  "Ollama",
@@ -165,7 +255,7 @@
                      {
                          "name":  "Qdrant",
                          "status":  "online",
-                         "detail":  "points: 54"
+                         "detail":  "points: 142"
                      },
                      {
                          "name":  "Open WebUI",
@@ -180,67 +270,67 @@
                  ],
     "recentCaptures":  [
                            {
-                               "title":  "classification-test-ghost",
-                               "project":  "Ghost",
-                               "type":  "processed-inbox-note",
-                               "status":  "active",
-                               "modified":  "2026-06-02 13:01"
-                           },
-                           {
-                               "title":  "drive-test-note-20260602-123226",
-                               "project":  "General",
-                               "type":  "processed-inbox-note",
-                               "status":  "active",
-                               "modified":  "2026-06-02 12:39"
-                           },
-                           {
-                               "title":  "drive-continuous-drive-test-20260602-123929-20260602-123934",
-                               "project":  "Automations",
-                               "type":  "processed-inbox-note",
-                               "status":  "active",
-                               "modified":  "2026-06-02 12:39"
-                           },
-                           {
                                "title":  "telegram-idea-20260602-122230-2",
                                "project":  "Research",
                                "type":  "processed-inbox-note",
                                "status":  "active",
-                               "modified":  "2026-06-02 12:22"
-                           },
-                           {
-                               "title":  "telegram-general-20260602-122224-1",
-                               "project":  "General",
-                               "type":  "processed-inbox-note",
-                               "status":  "active",
-                               "modified":  "2026-06-02 12:22"
+                               "modified":  "2026-06-02 19:59"
                            },
                            {
                                "title":  "telegram-idea-20260602-121301-77",
                                "project":  "CreedConsult",
                                "type":  "processed-inbox-note",
                                "status":  "active",
-                               "modified":  "2026-06-02 12:13"
+                               "modified":  "2026-06-02 19:58"
                            },
                            {
-                               "title":  "portal-Browser Form Acceptance Test-20260602-115749",
+                               "title":  "telegram-general-20260602-122224-1",
                                "project":  "General",
                                "type":  "processed-inbox-note",
                                "status":  "active",
-                               "modified":  "2026-06-02 12:04"
+                               "modified":  "2026-06-02 19:58"
+                           },
+                           {
+                               "title":  "drive-test-note-20260602-123226",
+                               "project":  "General",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 19:58"
+                           },
+                           {
+                               "title":  "drive-continuous-drive-test-20260602-123929-20260602-123934",
+                               "project":  "Automations",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 19:58"
                            },
                            {
                                "title":  "portal-Portal Acceptance Test-20260602-115526",
                                "project":  "Agents",
                                "type":  "",
                                "status":  "",
-                               "modified":  "2026-06-02 11:56"
+                               "modified":  "2026-06-02 19:57"
+                           },
+                           {
+                               "title":  "portal-Browser Form Acceptance Test-20260602-115749",
+                               "project":  "General",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 19:57"
                            },
                            {
                                "title":  "drive-drive-test-note-20260602-115452",
                                "project":  "creedConsult",
                                "type":  "",
                                "status":  "",
-                               "modified":  "2026-06-02 11:56"
+                               "modified":  "2026-06-02 19:57"
+                           },
+                           {
+                               "title":  "classification-test-ghost",
+                               "project":  "Ghost",
+                               "type":  "processed-inbox-note",
+                               "status":  "active",
+                               "modified":  "2026-06-02 19:56"
                            }
                        ],
     "projects":  [
@@ -262,6 +352,11 @@
                  ],
     "latestBriefs":  [
                          {
+                             "title":  "20260602-181544-Codex-Build the next Ghost privacy dashboard workflow",
+                             "agent":  "Codex",
+                             "generated":  "2026-06-02 18:15"
+                         },
+                         {
                              "title":  "20260602-134430-Codex-Implement the next Ghost privacy review workflow",
                              "agent":  "Codex",
                              "generated":  "2026-06-02 13:44"
@@ -281,6 +376,8 @@
     document.getElementById("memoryRecordCount").textContent = data.memoryRecordCount;
     document.getElementById("vectorPointCount").textContent = data.vectorPointCount;
     document.getElementById("memoryHealthScore").textContent = data.memoryHealthScore;
+    document.getElementById("wikiPageCount").textContent = data.wikiPageCount;
+    document.getElementById("orphanNoteCount").textContent = data.orphanNoteCount;
 
     const services = document.getElementById("services");
     data.services.forEach((service) => {
@@ -299,6 +396,15 @@
     });
     if (!data.recentCaptures.length) captures.textContent = "No recent captures available.";
 
+    const hubs = document.getElementById("topLinkedHubs");
+    data.topLinkedHubs.forEach((hub) => {
+      const card = document.createElement("div");
+      card.className = "item";
+      card.innerHTML = "<div class=\"item-title\">" + text(hub.hub) + "</div><div class=\"meta\">" + text(hub.inbound) + " inbound links</div>";
+      hubs.appendChild(card);
+    });
+    if (!data.topLinkedHubs.length) hubs.textContent = "No linked hubs available.";
+
     const projects = document.getElementById("projects");
     data.projects.forEach((project) => {
       const card = document.createElement("div");
@@ -316,6 +422,15 @@
       briefs.appendChild(card);
     });
     if (!data.latestBriefs.length) briefs.textContent = "No agent briefs generated yet.";
+
+    const wikiUpdates = document.getElementById("latestWikiUpdates");
+    data.latestWikiUpdates.forEach((page) => {
+      const card = document.createElement("div");
+      card.className = "item";
+      card.innerHTML = "<div class=\"item-title\">" + text(page.title) + "</div><div class=\"meta\">" + text(page.category) + " &middot; " + text(page.updated) + "</div>";
+      wikiUpdates.appendChild(card);
+    });
+    if (!data.latestWikiUpdates.length) wikiUpdates.textContent = "No wiki updates available.";
   </script>
 </body>
 </html>
